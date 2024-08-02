@@ -25,14 +25,14 @@ def main() -> None:
         if choice == '1':
             clear_terminal()
             print("==== Logging Demonstrations ====")
-            log_info("This is an informational message.", config=config)
-            log_warning("This is a warning message.", config=config)
-            log_error("An error occurred during processing.", config=config)
-            log_debug("Debugging information.", config=config)
-            log_success("Operation completed successfully.", config=config)
-            log_failure("Operation failed to complete.", config=config)
-            log_critical("Critical error encountered.", config=config)
-            log_custom("This is a custom message with a custom symbol and color.", symbol="[MYAPP]", color=Colors.MAGENTA, config=config)
+            log_info("This is an informational message.", config)
+            log_warning("This is a warning message.", config)
+            log_error("An error occurred during processing.", config)
+            log_debug("Debugging information.", config)
+            log_success("Operation completed successfully.", config)
+            log_failure("Operation failed to complete.", config)
+            log_critical("Critical error encountered.", config)
+            log_custom("This is a custom message with a custom symbol and color.", "[MYAPP]", Colors.MAGENTA, config)
             input("Press Enter to return to the menu...")
 
         elif choice == '2':
@@ -41,7 +41,7 @@ def main() -> None:
             total_items = 10
             for i in range(total_items):
                 time.sleep(0.5)
-                print_progress_bar(i + 1, total_items, prefix='Progress:', suffix='Complete', length=50)
+                print_progress_bar(i + 1, total_items, 'Progress:', 'Complete', 50)
             input("Press Enter to return to the menu...")
 
         elif choice == '3':
