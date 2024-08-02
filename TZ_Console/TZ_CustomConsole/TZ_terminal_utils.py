@@ -47,7 +47,8 @@ DEFAULT_CONFIG = {
 }
 
 def load_config(config_path: str) -> Dict[str, Any]:
-    """Loads configuration from a specified path."""
+
+    # Loads configuration from a specified path.
     try:
         with open(config_path, 'r') as config_file:
             config = json.load(config_file)
@@ -58,7 +59,8 @@ def load_config(config_path: str) -> Dict[str, Any]:
         return DEFAULT_CONFIG
 
 def rotate_log_file(file_path: str) -> None:
-    """Rotates the log file."""
+
+    # Rotates the log file.
     if os.path.exists(file_path):
         base, ext = os.path.splitext(file_path)
         for i in reversed(range(5)):
@@ -69,7 +71,8 @@ def rotate_log_file(file_path: str) -> None:
         os.rename(file_path, f"{base}.1{ext}")
 
 def get_timestamp() -> str:
-    """Returns the current timestamp in a readable format."""
+
+    # Returns the current timestamp in a readable format.
     return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 def log_message(
@@ -81,7 +84,8 @@ def log_message(
     console: bool = True,
     end: str = '\n'
 ) -> None:
-    """Logs a message with a specific symbol and color, optionally to a file and/or console."""
+    
+    # Logs a message with a specific symbol and color, optionally to a file and/or console.
     if config is None:
         config = DEFAULT_CONFIG
 
@@ -103,7 +107,8 @@ def log_message(
             log_file.write(f"{level} {get_timestamp()} - {message}\n")
 
 def clear_terminal() -> None:
-    """Clears the terminal screen."""
+
+    # Clears the terminal screen.
     os.system('cls' if os.name == 'nt' else 'clear')
     log_message("Terminal cleared", level=Symbols.INFO, color=Colors.GREEN)
 
@@ -133,7 +138,8 @@ def log_custom(message: str, symbol: str = Symbols.CUSTOM, color: str = Colors.B
     log_message(message, level=symbol, color=color, to_file=to_file, config=config)
 
 def handle_exception(exc_type, exc_value, exc_traceback, config: Optional[Dict[str, Any]] = None) -> None:
-    """Handles exceptions by logging the traceback."""
+
+    # Handles exceptions by logging the traceback.
     if issubclass(exc_type, KeyboardInterrupt):
         sys.__excepthook__(exc_type, exc_value, exc_traceback)
         return
@@ -145,7 +151,8 @@ def handle_exception(exc_type, exc_value, exc_traceback, config: Optional[Dict[s
 sys.excepthook = lambda exc_type, exc_value, exc_traceback: handle_exception(exc_type, exc_value, exc_traceback, load_config("TZ_CustomConsole/config.json"))
 
 def time_function(func: Callable) -> Callable:
-    """Decorator to measure the execution time of a function."""
+
+    # Decorator to measure the execution time of a function.
     def wrapper(*args, **kwargs) -> Any:
         start_time = time.time()
         result = func(*args, **kwargs)
@@ -155,7 +162,8 @@ def time_function(func: Callable) -> Callable:
     return wrapper
 
 def print_progress_bar(iteration: int, total: int, prefix: str = '', suffix: str = '', length: int = 50, fill: str = '█', print_end: str = "\r") -> None:
-    """Prints a progress bar to the terminal."""
+
+    # Prints a progress bar to the terminal.
     percent = f"{100 * (iteration / float(total)):.1f}"
     filled_length = int(length * iteration // total)
     bar = fill * filled_length + '-' * (length - filled_length)

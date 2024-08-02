@@ -5,7 +5,8 @@ from typing import Optional, Dict
 from TZ_CustomConsole.TZ_terminal_utils import *
 
 def print_menu() -> None:
-    """Prints the main menu."""
+    
+    # Prints the main menu.
     clear_terminal()
     print("==== TZ Console Application Menu ====")
     print("1. Demonstrate logging at different levels")
