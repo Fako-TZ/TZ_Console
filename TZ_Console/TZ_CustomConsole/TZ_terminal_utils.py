@@ -46,7 +46,9 @@ DEFAULT_CONFIG = {
     'log_rotation_size': 10485760  # 10 MB
 }
 
-def load_config(config_path: str) -> Dict[str, Any]:
+config_path = "TZ_Console/TZ_Console/TZ_CustomConsole/config.json"
+
+def load_config() -> Dict[str, Any]:
 
     # Loads configuration from a specified path.
     try:
@@ -148,7 +150,7 @@ def handle_exception(exc_type, exc_value, exc_traceback, config: Optional[Dict[s
     formatted_traceback = ''.join(traceback.format_exception(exc_type, exc_value, exc_traceback))
     log_message(formatted_traceback, level=Symbols.ERROR, color=Colors.RED, to_file=True, config=config)
 
-sys.excepthook = lambda exc_type, exc_value, exc_traceback: handle_exception(exc_type, exc_value, exc_traceback, load_config("TZ_CustomConsole/config.json"))
+sys.excepthook = lambda exc_type, exc_value, exc_traceback: handle_exception(exc_type, exc_value, exc_traceback, load_config())
 
 def time_function(func: Callable) -> Callable:
 

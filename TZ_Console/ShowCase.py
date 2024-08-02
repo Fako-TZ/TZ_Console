@@ -16,11 +16,11 @@ def print_menu() -> None:
     print("===================================")
 
 def main() -> None:
-    config = load_config("TZ_CustomConsole/config.json")
+    config = load_config()
     
     while True:
         print_menu()
-        choice = input("Enter your choice (1-4): ").strip()
+        choice = input("Enter your choice (1-5): ").strip()
 
         if choice == '1':
             clear_terminal()
@@ -54,6 +54,10 @@ def main() -> None:
             clear_terminal()
             print("Exiting the application. Goodbye!")
             break
+
+        elif choice == '5':
+            print(os.getcwd())
+            input("Press Enter to return to the menu...")
 
         else:
             print("Invalid choice. Please enter a number between 1 and 4.")
