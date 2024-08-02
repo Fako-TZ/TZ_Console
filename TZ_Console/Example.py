@@ -21,7 +21,7 @@ def main():
     # Demonstrating progress bar
     total_items = 10
     for i in range(total_items):
-        time.sleep(0.1)  # Simulate work
+        time.sleep(0.1)
         print_progress_bar(i + 1, total_items, prefix='Progress:', suffix='Complete', length=50)
 
     # Demonstrating configuration loading
